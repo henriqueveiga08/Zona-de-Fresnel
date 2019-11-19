@@ -121,7 +121,7 @@ public class InicioView extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel9.setText("Calculo da Zona de Fresnel");
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/zonafresnel/img/Logo_IF_fundo_Cinza_menor.jpg"))); // NOI18N
@@ -191,7 +191,8 @@ public class InicioView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pack();
+        setSize(new java.awt.Dimension(850, 461));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
