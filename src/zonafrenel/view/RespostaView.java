@@ -40,7 +40,7 @@ public class RespostaView extends javax.swing.JFrame {
         setTitle("Resposta Cálculo Zona de Fresnel");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Resposta Cálculo de enlace");
+        jLabel1.setText("Resposta Cálculo de Enlace");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Potência Recebida [dBm]");
