@@ -5,6 +5,9 @@
  */
 package zonafrenel.view;
 
+import javafx.scene.paint.Color;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Homirrimo
@@ -267,10 +270,42 @@ public class InserirDadosView extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLimparCamposActionPerformed
 
     private void buttonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalcularActionPerformed
-        // Desabilita interface de inserirDadosView
-        setVisible(false);
-        // Vai para InserirDadosView
-        new RespostaView().setVisible(true);
+
+        if (campoAlturaTorreRx.getText().equals("")) {
+            labelAlturaRx.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        } else if (campoAlturaTorreTx.getText().equals("")){
+            labelAlturaTx.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoAtenuacaoCabo.getText().equals("")){
+            labelAtenuacaoCabo.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoAtenuacaoConector.getText().equals("")){
+            labelAtenuacaoConector.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoDistanciaRaioEnlace.getText().equals("")){
+            labelDistancia.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoFrequencia.getText().equals("")){
+            labelFrequencia.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoGanhoAntenaRx.getText().equals("")){
+            labelGanhoAntenaRx.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoGanhoAntenaTx.getText().equals("")){
+            labelGanhoAntenaTx.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else if (campoPotenciaTransmissor.getText().equals("")){
+            labelPotencia.setForeground(java.awt.Color.RED);
+            JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            // Desabilita interface de inserirDadosView
+            setVisible(false);
+            // Vai para InserirDadosView
+            new RespostaView().setVisible(true);
+        }
+
+
     }//GEN-LAST:event_buttonCalcularActionPerformed
 
     /**

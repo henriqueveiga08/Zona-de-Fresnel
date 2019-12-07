@@ -200,7 +200,7 @@ public class InicioView extends javax.swing.JFrame {
         setVisible(false);
         // Vai para InserirDadosView
         new InserirDadosView().setVisible(true);
-        
+       
         
     }//GEN-LAST:event_buttonInicioActionPerformed
 
