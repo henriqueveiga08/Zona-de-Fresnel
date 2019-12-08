@@ -7,6 +7,7 @@ package zonafrenel.view;
 
 import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
+import zonafresnel.controller.CalculoZonaFresnel;
 
 /**
  *
@@ -16,7 +17,13 @@ public class InserirDadosView extends javax.swing.JFrame {
 
     /**
      * Creates new form InserirDadosView
+     *
+     * ViewResultado viewResultado; ControllerPrincipal controllerPrincipal =
+     * new ControllerPrincipal();
      */
+    RespostaView respostaView;
+    CalculoZonaFresnel calculoZonaFresnel = new CalculoZonaFresnel();
+
     public InserirDadosView() {
         initComponents();
     }
@@ -53,6 +60,7 @@ public class InserirDadosView extends javax.swing.JFrame {
         panelBotoes = new javax.swing.JPanel();
         buttonLimparCampos = new javax.swing.JButton();
         buttonCalcular = new javax.swing.JButton();
+        buttonInserirAutomatico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inserir dados");
@@ -201,22 +209,31 @@ public class InserirDadosView extends javax.swing.JFrame {
             }
         });
 
+        buttonInserirAutomatico.setText("Inserir Dados Automáticos");
+        buttonInserirAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInserirAutomaticoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBotoesLayout = new javax.swing.GroupLayout(panelBotoes);
         panelBotoes.setLayout(panelBotoesLayout);
         panelBotoesLayout.setHorizontalGroup(
             panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotoesLayout.createSequentialGroup()
                 .addComponent(buttonLimparCampos, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                .addGap(79, 79, 79)
+                .addComponent(buttonInserirAutomatico, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(buttonCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelBotoesLayout.setVerticalGroup(
             panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotoesLayout.createSequentialGroup()
-                .addComponent(buttonLimparCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(7, 7, 7))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotoesLayout.createSequentialGroup()
-                .addComponent(buttonCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addGroup(panelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonLimparCampos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                    .addComponent(buttonInserirAutomatico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -231,11 +248,12 @@ public class InserirDadosView extends javax.swing.JFrame {
                         .addComponent(labelTitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(panelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(panelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(11, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +284,17 @@ public class InserirDadosView extends javax.swing.JFrame {
     }//GEN-LAST:event_campoGanhoAntenaRxActionPerformed
 
     private void buttonLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparCamposActionPerformed
-        // TODO add your handling code here:
+        // limpa todos os campos
+        campoAlturaTorreRx.setText("");
+        campoAlturaTorreTx.setText("");
+        campoAtenuacaoCabo.setText("");
+        campoAtenuacaoConector.setText("");
+        campoDistanciaRaioEnlace.setText("");
+        campoFrequencia.setText("");
+        campoGanhoAntenaRx.setText("");
+        campoGanhoAntenaTx.setText("");
+        campoPotenciaTransmissor.setText("");
+
     }//GEN-LAST:event_buttonLimparCamposActionPerformed
 
     private void buttonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalcularActionPerformed
@@ -274,39 +302,76 @@ public class InserirDadosView extends javax.swing.JFrame {
         if (campoAlturaTorreRx.getText().equals("")) {
             labelAlturaRx.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        } else if (campoAlturaTorreTx.getText().equals("")){
+        } else if (campoAlturaTorreTx.getText().equals("")) {
             labelAlturaTx.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoAtenuacaoCabo.getText().equals("")){
+        } else if (campoAtenuacaoCabo.getText().equals("")) {
             labelAtenuacaoCabo.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoAtenuacaoConector.getText().equals("")){
+        } else if (campoAtenuacaoConector.getText().equals("")) {
             labelAtenuacaoConector.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoDistanciaRaioEnlace.getText().equals("")){
+        } else if (campoDistanciaRaioEnlace.getText().equals("")) {
             labelDistancia.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoFrequencia.getText().equals("")){
+        } else if (campoFrequencia.getText().equals("")) {
             labelFrequencia.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoGanhoAntenaRx.getText().equals("")){
+        } else if (campoGanhoAntenaRx.getText().equals("")) {
             labelGanhoAntenaRx.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoGanhoAntenaTx.getText().equals("")){
+        } else if (campoGanhoAntenaTx.getText().equals("")) {
             labelGanhoAntenaTx.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else if (campoPotenciaTransmissor.getText().equals("")){
+        } else if (campoPotenciaTransmissor.getText().equals("")) {
             labelPotencia.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
-        }else {
+        } else {
+
+            respostaView = new RespostaView(calculoZonaFresnel.calculaPotenciaRecebidaPr(
+                    calculoZonaFresnel.calculaPotenciaEfetivamenteIrradiadaPeirp(Double.parseDouble(campoPotenciaTransmissor.getText()),
+                            Double.parseDouble(campoGanhoAntenaTx.getText()),
+                            Double.parseDouble(campoAtenuacaoConector.getText()),
+                            Double.parseDouble(campoAlturaTorreTx.getText()),
+                            Double.parseDouble(campoAtenuacaoCabo.getText())),
+                    calculoZonaFresnel.calculaAe(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
+                            Double.parseDouble(campoFrequencia.getText())),
+                    Double.parseDouble(campoAtenuacaoConector.getText()),
+                    Double.parseDouble(campoAlturaTorreRx.getText()),
+                    Double.parseDouble(campoAtenuacaoCabo.getText())),
+                    calculoZonaFresnel.calculaPotenciaEfetivamenteIrradiadaPeirp(Double.parseDouble(campoPotenciaTransmissor.getText()),
+                            Double.parseDouble(campoGanhoAntenaTx.getText()),
+                            Double.parseDouble(campoAtenuacaoConector.getText()),
+                            Double.parseDouble(campoAlturaTorreTx.getText()),
+                            Double.parseDouble(campoAtenuacaoCabo.getText())),
+                    calculoZonaFresnel.calculaRaio(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
+                            Double.parseDouble(campoFrequencia.getText())),
+                    Double.parseDouble(campoAlturaTorreTx.getText()),
+                    Double.parseDouble(campoAlturaTorreTx.getText()),
+                    Double.parseDouble(campoFrequencia.getText()),
+                    Double.parseDouble(campoDistanciaRaioEnlace.getText()));
+
             // Desabilita interface de inserirDadosView
             setVisible(false);
             // Vai para InserirDadosView
-            new RespostaView().setVisible(true);
+            respostaView.setVisible(true);
         }
 
 
     }//GEN-LAST:event_buttonCalcularActionPerformed
+
+    private void buttonInserirAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInserirAutomaticoActionPerformed
+        // Adiciona aos campos, dados pre-definidos 
+        campoAlturaTorreRx.setText("100");
+        campoAlturaTorreTx.setText("100");
+        campoAtenuacaoCabo.setText("1");
+        campoAtenuacaoConector.setText("1");
+        campoDistanciaRaioEnlace.setText("10");
+        campoFrequencia.setText("400");
+        campoGanhoAntenaRx.setText("16.15");
+        campoGanhoAntenaTx.setText("16.15");
+        campoPotenciaTransmissor.setText("33");
+    }//GEN-LAST:event_buttonInserirAutomaticoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,6 +410,7 @@ public class InserirDadosView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCalcular;
+    private javax.swing.JButton buttonInserirAutomatico;
     private javax.swing.JButton buttonLimparCampos;
     private javax.swing.JTextField campoAlturaTorreRx;
     private javax.swing.JTextField campoAlturaTorreTx;
