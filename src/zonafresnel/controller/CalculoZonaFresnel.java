@@ -17,7 +17,7 @@ public class CalculoZonaFresnel {
         return potenciaTransmissorPxdBm + ganhoAntenaTx - (2 * atenuacaoConector) - (alturaTx * atenuacaoCabo / 100);
     }
     /*Calculo da Potencia Recebida*/
-    public double calculoPotenciaRecebida(double pEirp, double aE, double atenuacaoConector, double alturaRx, double atenuacaoCabo) {
-        return pEirp - aE - (2 * atenuacaoConector) - (alturaRx * atenuacaoCabo / 100);
+    public double calculoPotenciaRecebida(double pEirp, double aE, double atenuacaoConector, double alturaRx, double atenuacaoCabo, double ganhoAntenaRx) {
+        return pEirp - aE - (2 * atenuacaoConector) - (alturaRx * atenuacaoCabo / 100)+ganhoAntenaRx;
     }
 }

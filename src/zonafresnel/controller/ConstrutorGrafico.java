@@ -20,41 +20,26 @@ public class ConstrutorGrafico {
         double x, y, d1, d2 = 0.0;
         double altura = 0.0;
         
-        if(torre1 == torre2)
-        {
-            for(int i = 1; i < 100; i++)
-            {
+        if(torre1 == torre2){
+            for(int i = 1; i < 100; i++){
                 x = (distancia / 100) * i;
-                
                 d1 = x;
                 d2 = distancia - x;
-                
                 y = 550 * Math.sqrt((d1 * d2)/(distancia * frequencia)) + torre1; 
-                
                 P1.add(x, y);
-                
                 y = (y * -1) + (torre1 * 2);
-                
                 P2.add(x, y);
             }
         }
-        else
-        {
-            for(int i = 1; i < 100; i++)
-            {
+        else{
+            for(int i = 1; i < 100; i++){
                 x = (distancia / 100) * i;
-                
                 d1 = x;
                 d2 = distancia - x;
-                
                 altura = ((((torre1-torre2) * d2) / distancia) + torre2);
-
                 y = 550 * Math.sqrt((d1 * d2)/(distancia * frequencia)) + altura; 
-                
                 P1.add(x, y);
-                
                 y = (y * -1) + (altura * 2);
-                
                 P2.add(x, y);
             }
         }
@@ -77,7 +62,8 @@ public class ConstrutorGrafico {
         
         XYLineAndShapeRenderer renderer = (XYLineAndShapeRenderer) xyplot.getRenderer();
         
-        renderer.setSeriesPaint(1, Color.red);
+        renderer.setSeriesPaint(1, Color.BLUE);
+        renderer.setSeriesPaint(0, Color.BLUE);
         renderer.setSeriesShapesVisible(0, Boolean.FALSE);
         renderer.setSeriesShapesVisible(1, Boolean.FALSE);
         renderer.setSeriesVisibleInLegend(0, Boolean.FALSE);
@@ -87,7 +73,7 @@ public class ConstrutorGrafico {
         
         ChartPanel chartPanel = new ChartPanel(chart);
         
-        chartPanel.setPreferredSize(new Dimension(400, 400));
+        chartPanel.setPreferredSize(new Dimension(500, 500));
         
         return chartPanel;
     }

@@ -337,7 +337,7 @@ public class InserirDadosView extends javax.swing.JFrame {
                             Double.parseDouble(campoFrequencia.getText())),
                     Double.parseDouble(campoAtenuacaoConector.getText()),
                     Double.parseDouble(campoAlturaTorreRx.getText()),
-                    Double.parseDouble(campoAtenuacaoCabo.getText())),
+                    Double.parseDouble(campoAtenuacaoCabo.getText()), Double.parseDouble(campoGanhoAntenaRx.getText())),
                     calculoZonaFresnel.calculoPotenciaIrradiada(Double.parseDouble(campoPotenciaTransmissor.getText()),
                             Double.parseDouble(campoGanhoAntenaTx.getText()),
                             Double.parseDouble(campoAtenuacaoConector.getText()),
@@ -346,7 +346,7 @@ public class InserirDadosView extends javax.swing.JFrame {
                     calculoZonaFresnel.calculoRaio(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
                             Double.parseDouble(campoFrequencia.getText())),
                     Double.parseDouble(campoAlturaTorreTx.getText()),
-                    Double.parseDouble(campoAlturaTorreTx.getText()),
+                    Double.parseDouble(campoAlturaTorreRx.getText()),
                     Double.parseDouble(campoFrequencia.getText()),
                     Double.parseDouble(campoDistanciaRaioEnlace.getText()));
 
@@ -369,7 +369,7 @@ public class InserirDadosView extends javax.swing.JFrame {
         campoFrequencia.setText("400");
         campoGanhoAntenaRx.setText("16.15");
         campoGanhoAntenaTx.setText("16.15");
-        campoPotenciaTransmissor.setText("33");
+        campoPotenciaTransmissor.setText("2");
     }//GEN-LAST:event_buttonInserirAutomaticoActionPerformed
 
     /**
