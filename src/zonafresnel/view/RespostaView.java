@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package zonafrenel.view;
+package zonafresnel.view;
 
 import java.awt.BorderLayout;
 import zonafresnel.controller.ConstrutorGrafico;

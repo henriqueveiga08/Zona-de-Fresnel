@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zonafrenel.view;
+package zonafresnel.view;
 
-import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
 import zonafresnel.controller.CalculoZonaFresnel;
 
@@ -328,23 +327,23 @@ public class InserirDadosView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         } else {
 
-            respostaView = new RespostaView(calculoZonaFresnel.calculaPotenciaRecebidaPr(
-                    calculoZonaFresnel.calculaPotenciaEfetivamenteIrradiadaPeirp(Double.parseDouble(campoPotenciaTransmissor.getText()),
+            respostaView = new RespostaView(calculoZonaFresnel.calculoPotenciaRecebida(
+                    calculoZonaFresnel.calculoPotenciaIrradiada(Double.parseDouble(campoPotenciaTransmissor.getText()),
                             Double.parseDouble(campoGanhoAntenaTx.getText()),
                             Double.parseDouble(campoAtenuacaoConector.getText()),
                             Double.parseDouble(campoAlturaTorreTx.getText()),
                             Double.parseDouble(campoAtenuacaoCabo.getText())),
-                    calculoZonaFresnel.calculaAe(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
+                    calculoZonaFresnel.calculoAtenuacao(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
                             Double.parseDouble(campoFrequencia.getText())),
                     Double.parseDouble(campoAtenuacaoConector.getText()),
                     Double.parseDouble(campoAlturaTorreRx.getText()),
                     Double.parseDouble(campoAtenuacaoCabo.getText())),
-                    calculoZonaFresnel.calculaPotenciaEfetivamenteIrradiadaPeirp(Double.parseDouble(campoPotenciaTransmissor.getText()),
+                    calculoZonaFresnel.calculoPotenciaIrradiada(Double.parseDouble(campoPotenciaTransmissor.getText()),
                             Double.parseDouble(campoGanhoAntenaTx.getText()),
                             Double.parseDouble(campoAtenuacaoConector.getText()),
                             Double.parseDouble(campoAlturaTorreTx.getText()),
                             Double.parseDouble(campoAtenuacaoCabo.getText())),
-                    calculoZonaFresnel.calculaRaio(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
+                    calculoZonaFresnel.calculoRaio(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
                             Double.parseDouble(campoFrequencia.getText())),
                     Double.parseDouble(campoAlturaTorreTx.getText()),
                     Double.parseDouble(campoAlturaTorreTx.getText()),
