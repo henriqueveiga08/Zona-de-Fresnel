@@ -11,7 +11,7 @@ public class VariaveisModel {
     private float alturaTorreRx;
     private float alturaTorreTx;
     private float atenuacaoConector;
-
+    
     public float getDistanciaRaioEnlace() {
         return distanciaRaioEnlace;
     }

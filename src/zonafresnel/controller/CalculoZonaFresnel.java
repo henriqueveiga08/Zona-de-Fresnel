@@ -4,7 +4,7 @@ public class CalculoZonaFresnel {
     /*Calculo do Raio*/
      public double calculoRaio(double distancia, double frequencia) {
         double raio = 0;
-        raio = (550 * Math.sqrt(((distancia / 2) * (distancia / 2)) / (distancia * frequencia)));
+        raio = (547 * Math.sqrt(((distancia / 2) * (distancia / 2)) / (distancia * frequencia)));
         return (double) raio;
     }
      /*Calculo da atenuacao*/

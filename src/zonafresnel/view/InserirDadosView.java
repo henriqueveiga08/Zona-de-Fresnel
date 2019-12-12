@@ -326,27 +326,31 @@ public class InserirDadosView extends javax.swing.JFrame {
             labelPotencia.setForeground(java.awt.Color.RED);
             JOptionPane.showMessageDialog(null, "Preencher todos os campos", "Atenção", JOptionPane.INFORMATION_MESSAGE);
         } else {
-
+            
+            double topografia[] = {1700, 1300, 700, 790, 770, 760, 750, 800, 850, 800, 700, 650, 625, 600,600, 600, 650, 700, 800, 850, 800, 100, 0, 0};
+            
+            double alturaRealTx = Double.parseDouble(campoAlturaTorreTx.getText()) + topografia[0];
+            double alturaRealRx = Double.parseDouble(campoAlturaTorreRx.getText()) + topografia[(int) Integer.parseInt(campoDistanciaRaioEnlace.getText())];
             respostaView = new RespostaView(calculoZonaFresnel.calculoPotenciaRecebida(
                     calculoZonaFresnel.calculoPotenciaIrradiada(Double.parseDouble(campoPotenciaTransmissor.getText()),
                             Double.parseDouble(campoGanhoAntenaTx.getText()),
                             Double.parseDouble(campoAtenuacaoConector.getText()),
-                            Double.parseDouble(campoAlturaTorreTx.getText()),
+                            alturaRealTx,
                             Double.parseDouble(campoAtenuacaoCabo.getText())),
                     calculoZonaFresnel.calculoAtenuacao(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
                             Double.parseDouble(campoFrequencia.getText())),
                     Double.parseDouble(campoAtenuacaoConector.getText()),
-                    Double.parseDouble(campoAlturaTorreRx.getText()),
+                    alturaRealRx,
                     Double.parseDouble(campoAtenuacaoCabo.getText()), Double.parseDouble(campoGanhoAntenaRx.getText())),
                     calculoZonaFresnel.calculoPotenciaIrradiada(Double.parseDouble(campoPotenciaTransmissor.getText()),
                             Double.parseDouble(campoGanhoAntenaTx.getText()),
                             Double.parseDouble(campoAtenuacaoConector.getText()),
-                            Double.parseDouble(campoAlturaTorreTx.getText()),
+                            alturaRealTx,
                             Double.parseDouble(campoAtenuacaoCabo.getText())),
                     calculoZonaFresnel.calculoRaio(Double.parseDouble(campoDistanciaRaioEnlace.getText()),
                             Double.parseDouble(campoFrequencia.getText())),
-                    Double.parseDouble(campoAlturaTorreTx.getText()),
-                    Double.parseDouble(campoAlturaTorreRx.getText()),
+                    alturaRealTx,
+                    alturaRealRx,
                     Double.parseDouble(campoFrequencia.getText()),
                     Double.parseDouble(campoDistanciaRaioEnlace.getText()));
 
